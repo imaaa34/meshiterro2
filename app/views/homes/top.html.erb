@@ -1,1 +1,14 @@
-<h1>トップページ</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h2 class="mt-5">welcome to <strong>Meshiterro2</strong> !!</h2>
+      <p>
+        In <strong>Meshiterro2</strong>,<br>
+        SNS community that indiscriminately stimulates the appetite of sensible citizens.
+      </p>
+      
+      <%= link_to 'Log in', new_user_session_path, class:'btn btn-info mr-2' %>
+      <%= link_to 'Sign Up', new_user_registration_path, class:'btn btn-success' %>
+    </div>
+  </div>
+</div>
