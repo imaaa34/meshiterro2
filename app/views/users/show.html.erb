@@ -1,10 +1,17 @@
-<div class="profile-container w-75 d-flex mx-auto justify-content-around align-items-center border-bottom py-5">
+<div class="profile-container w-75 d-flex mx-auto justify-content-around align-items-center border-bottom py-3">
   
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
   <h5 class="profile-name"><%= @user.name %></h5>
   <% if @user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user), class:"text-dark" %></p>
+    <%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-info" %>
+  <% else %>
+    <%= link_to "フォローする", root_path, class:"btn btn-info" %>
   <% end %>
+</div>
+
+<div class="profile-container w-75 d-flex mx-auto justify-content-around align-items-center border-bottom py-3">
+  <label>フォロー</label>
+  <label>フォロワー</label>
 </div>
 
 <%= render 'post_images/list', post_images: @post_images %>

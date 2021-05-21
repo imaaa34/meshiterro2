@@ -17,7 +17,22 @@
           </p>
           <p class="card-text">説明：<%= post_image.caption %></p>
           <span><i class="fas fa-user"></i> By <%= post_image.user.name %> ｜ </span>
-          <span><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class:"text-dark" %></span>
+          <span><i class="fas fa-calendar"></i> <%= post_image.created_at.strftime('%Y/%m/%d %H:%M') %> ｜ </span>
+          <span>
+            <%= link_to post_image_path(post_image.id), class:"text-dark" do %>
+              <i class="fas fa-comment"></i> <%= post_image.post_comments.count %>
+            <% end %> ｜ </span>
+          <span>
+            <% if post_image.favorited_by?(current_user) %>
+              <%= link_to post_image_favorites_path(post_image), method: :delete, class:"text-dark" do %>
+                <i class="fas fa-heart"></i>️ <%= post_image.favorites.count %>
+              <% end %>
+            <% else %>
+              <%= link_to post_image_favorites_path(post_image), method: :post, class:"text-dark" do %>
+                <i class="fas fa-heart"></i> <%= post_image.favorites.count %>
+              <% end %>
+            <% end %>
+          </span>
         </div>
       </div>
     </div>
