@@ -1,0 +1,38 @@
+<div class="containar">
+  <div class="error text-danger m-3">
+  <% if @post_image.errors.any? %>
+    <%= @post_image.errors.count %>件のエラーが発生しました<br>
+    <% @post_image.errors.full_messages.each do |message| %>
+      ・<%= message %><br>
+    <% end %>
+  <% end %>
+  </div>
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">投稿編集</h5>
+      <div class="form-body p-4">
+        
+        <%= form_with model: @post_image, local:true do |f| %>
+        
+                
+        <%= attachment_image_tag @post_image, :image, :fill, 60, 60, fallback: "no_image.jpg" %>
+      
+        <div class="input-group mb-3 mt-4">
+          <%= f.attachment_field :image, placeholder: "投稿画像" %>
+        </div>
+      
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
+          </div>
+          <%= f.text_field :shop_name, autofocus: true, placeholder:"お店の名前", class:"form-control" %>
+        </div>
+              
+        <div class="actions">
+          <%= f.submit "変更を保存", class:'btn btn-lg btn-block btn-info mt-4' %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
