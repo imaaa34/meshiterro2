@@ -1,0 +1,19 @@
+<div class="users-container w-75 d-flex mx-auto justify-content-around align-items-center border-bottom py-3">
+  ユーザー一覧
+</div>
+
+<div class="profile-container w-75 mx-auto align-items-center py-3">
+  <% @users.each do |user| %>
+  <div class="row align-items-center mx-auto my-3">
+    <div class="col-lg-4 col-md-4">
+      <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %>
+    </div>
+    <div class="col-lg-4 col-md-4">
+      <%= user.name %>
+    </div>
+    <div class="col-lg-4 col-md-4">
+      <%= link_to "フォローする", root_path, class:"btn btn-sm btn-info" %>
+    </div>
+  </div>
+  <% end %>
+</div>
