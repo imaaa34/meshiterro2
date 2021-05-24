@@ -21,6 +21,19 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+  
+  # フォロー機能
+  def following
+    @user = User.find(current_user.id)
+    @users = @user.followings
+    render 'show_follow'
+  end
+  
+  def follower
+    @user = User.find(current_user.id)
+    @users = @user.followers
+    render 'show_follower'
+  end
 
   private
   def user_params

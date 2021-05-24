@@ -10,8 +10,29 @@
 </div>
 
 <div class="profile-container w-75 d-flex mx-auto justify-content-around align-items-center border-bottom py-3">
-  <label>フォロー</label>
-  <label>フォロワー</label>
+  <% if @user.id == current_user.id %>
+  <div>
+    <%= link_to 'show_follow', class:"text-dark" do %>
+      <label>フォロー</label>
+      <%= @user.followings.count %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to 'show_follower', class:"text-dark" do %>
+      <label>フォロワー</label>
+      <%= @user.followers.count %>
+    <% end %>
+  </div>
+  <% else %>
+  <div>
+    <label>フォロー</label>
+    <%= @user.followings.count %>
+  </div>
+  <div>
+    <label>フォロワー</label>
+    <%= @user.followers.count %>
+  </div>
+  <% end %>
 </div>
 
 <%= render 'post_images/list', post_images: @post_images %>
