@@ -1,1 +1,1 @@
-document.getElementById('heart').innerHTML = '<%= escape_javascript(render 'favorites/favorite', post_image: @post_image) %>'
+document.getElementById('likes_buttons_<%= @post_image.id %>').innerHTML = '<%= escape_javascript(render 'favorites/favorite', post_image: @post_image) %>'

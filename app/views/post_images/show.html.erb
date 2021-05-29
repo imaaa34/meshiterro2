@@ -22,7 +22,7 @@
               <i class="fas fa-comment"></i> <%= @post_image.post_comments.count %>
             <% end %> ｜ </span>
           
-          <span id="heart">
+          <span id="likes_buttons_<%= @post_image.id %>">
             <%= render 'favorites/favorite', post_image: @post_image %>
           </span>
           

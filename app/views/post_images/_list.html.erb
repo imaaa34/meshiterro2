@@ -22,17 +22,11 @@
             <%= link_to post_image_path(post_image.id), class:"text-dark" do %>
               <i class="fas fa-comment"></i> <%= post_image.post_comments.count %>
             <% end %> ｜ </span>
-          <span>
-            <% if post_image.favorited_by?(current_user) %>
-              <%= link_to post_image_favorites_path(post_image), method: :delete, class:"text-dark" do %>
-                <i class="fas fa-heart"></i>️ <%= post_image.favorites.count %>
-              <% end %>
-            <% else %>
-              <%= link_to post_image_favorites_path(post_image), method: :post, class:"text-dark" do %>
-                <i class="fas fa-heart"></i> <%= post_image.favorites.count %>
-              <% end %>
-            <% end %>
+          
+          <span id="likes_buttons_<%= post_image.id %>">
+            <%= render 'favorites/favorite', post_image: post_image %>
           </span>
+          
         </div>
       </div>
     </div>
