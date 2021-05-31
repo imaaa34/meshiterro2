@@ -15,7 +15,20 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.page(params[:page]).reverse_order
+    user = current_user
+    @users = user.followings
+    current_user_post_images = PostImage.where(user_id: current_user.id)
+    # @post_images = [current_user_post_images]
+    @post_images = []
+    if @users.present?
+      @users.each do |user|
+        user_post_images = PostImage.where(user_id: user.id)
+        @post_images.concat(user_post_images)
+      end
+    end
+    @post_images.concat(current_user_post_images)
+    @post_images = @post_images.sort_by!{|post_image| post_image.created_at}.reverse
+    @page = Kaminari.paginate_array(@post_images).page(params[:page])
   end
 
   def show
