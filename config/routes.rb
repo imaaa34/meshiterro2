@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
   end
   resources :users, only: [:show, :edit, :update, :index]
+  get 'unsubscribe/:id' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
+  patch 'unsubscribe/:id/withdraw' => 'homes#withdraw', as: 'withdraw_user'
   resources :relationships, only: [:create, :destroy]
 end

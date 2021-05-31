@@ -35,5 +35,10 @@ class User < ApplicationRecord
   def following?(other_user)
     self.followings.include?(other_user)
   end
+  
+  # 退会ユーザーはログインできなくする
+  def active_for_authentication?
+    super && (self.is_valid == true)
+  end
 
 end

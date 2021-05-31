@@ -18,7 +18,6 @@ class PostImagesController < ApplicationController
     user = current_user
     @users = user.followings
     current_user_post_images = PostImage.where(user_id: current_user.id)
-    # @post_images = [current_user_post_images]
     @post_images = []
     if @users.present?
       @users.each do |user|
