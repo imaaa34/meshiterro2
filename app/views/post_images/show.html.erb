@@ -44,7 +44,10 @@
             <% end %>
             <div class="ml-4 overflow-hidden">
               <%= post_comment.user.name %> ｜ 
-              <%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %><br>
+              <%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+              <% if post_comment.user == current_user %>
+                 ｜ <%= link_to '削除', post_image_post_comment_path(@post_image.id, post_comment.id), method: :delete, 'data-confirm' => 'Are you sure to delete your comment?', class:"text-dark" %><br>
+              <% end %>
               <div class="comment mt-3">
                 <%= post_comment.comment %>
               </div>
