@@ -19,7 +19,7 @@
           <span><i class="fas fa-calendar"></i> <%= @post_image.created_at.strftime('%Y/%m/%d %H:%M') %> ｜ </span>
           <span>
             <%= link_to post_image_path(@post_image.id), class:"text-dark" do %>
-              <i class="fas fa-comment"></i> <%= @post_image.post_comments.count %>
+              <i class="fas fa-comment"></i> <span class="post_comment_count"><%= @post_image.post_comments.count %></span>
             <% end %> ｜ </span>
           
           <span id="likes_buttons_<%= @post_image.id %>">
@@ -35,10 +35,13 @@
       
       <hr>
       
-      <%= render 'post_images/post_comment', post_image: @post_image %>
+      <!--コメント一覧非同期通信-->
+      <span class="post_comment">
+        <%= render 'post_comments/post_comment', post_image: @post_image %>
+      </span>
       
       <div class="card-text">
-        <%= form_with(model:[@post_image, @post_comment], local: true) do |f| %>
+        <%= form_with(model:[@post_image, @post_comment], remote: true) do |f| %>
           <div class="py-3">コメントする</div>
           <%= f.text_area :comment, class:"form-control", rows: '3', placeholder: "コメントをここに" %>
           <%= f.submit "送信する", class:"btn btn-lg btn-block btn-info mt-4" %>

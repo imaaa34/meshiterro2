@@ -1,0 +1,6 @@
+<!--コメント数を非同期通信で反映させる-->
+$(".post_comment_count").html("<%= @post_image.post_comments.count %>");
+<!--コメント一覧を非同期通信で反映させる-->
+$(".post_comment").html("<%= j(render 'post_comments/post_comment', post_image: @post_image) %>");
+<!--非同期通信後フォームの値を空にする-->
+$(".form-control").val("");
