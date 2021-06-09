@@ -1,11 +1,6 @@
 <div class="containar">
   <div class="error text-danger m-3">
-  <% if @post_image.errors.any? %>
-    <%= @post_image.errors.count %>件のエラーが発生しました<br>
-    <% @post_image.errors.full_messages.each do |message| %>
-      ・<%= message %><br>
-    <% end %>
-  <% end %>
+    <%= render 'devise/shared/error_messages', resource: @post_image %>
   </div>
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
