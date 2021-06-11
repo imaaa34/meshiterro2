@@ -6,9 +6,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
-        <% if admin_signed_in? %>
+        <% if current_user.admin? %>
+        <li class="nav-item">
+          <%= link_to admin_post_images_path, class: 'nav-link text-dark' do %>
+            <i class="fas fa-home"></i> Posts
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
+            <i class="fas fa-user-friends"></i> Users
+          <% end %>
+        </li>
         <li>
-          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+          <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
             <i class="fas fa-sign-out-alt"></i> Sign out
           <% end %>             
         </li>
