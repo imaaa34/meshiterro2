@@ -2,6 +2,11 @@ class Admin::UsersController < ApplicationController
   before_action :if_not_admin
   
   def index
+    @users = User.all
+  end
+  
+  def show
+    @user = User.find(params[:id])
   end
   
   private

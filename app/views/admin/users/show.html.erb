@@ -1,0 +1,38 @@
+<div class="profile-container w-75 d-flex mx-auto justify-content-around align-items-center border-bottom py-3">
+  
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %>
+  <h5 class="profile-name"><%= @user.name %></h5>
+  <%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-info" %>
+</div>
+
+<div class="profile-container w-75 d-flex mx-auto justify-content-around align-items-center border-bottom py-3">
+  <div>
+    <%= link_to 'show_follow', class:"text-dark" do %>
+      <label>フォロー</label>
+      <%= @user.followings.count %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to 'show_follower', class:"text-dark" do %>
+      <label>フォロワー</label>
+      <%= @user.followers.count %>
+    <% end %>
+  </div>
+</div>
+
+<div class="profile-container w-75 d-flex mx-auto justify-content-around align-items-center border-bottom py-3">
+  <table>
+    <tr>
+      <th>Email：</th>
+      <td><%= @user.email %></td>  
+    </tr>
+    <tr>
+      <th>Password：</th>
+      <td><%= @user.password %></td>
+    </tr>
+    <tr>
+      <th>Password Confirmation：</th>
+      <td><%= @user.password_confirmation %></td>
+    </tr>
+  </table>
+</div>
