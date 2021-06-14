@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show, :edit, :update, :index]
   namespace :admin do
-    resources :users, only: [:index, :show, :edit]
+    resources :users, only: [:index, :show, :edit, :update]
     resources :post_images, only: [:index, :show, :edit]
   end
   get 'unsubscribe/:id' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
