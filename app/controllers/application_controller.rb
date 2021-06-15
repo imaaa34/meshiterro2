@@ -4,7 +4,11 @@ class ApplicationController < ActionController::Base
   
 
   def after_sign_in_path_for(resource)
-    post_images_path
+    if user_signed_in? && current_user.admin?
+      admin_post_images_path
+    elsif users_signed_in?
+      post_images_path
+    end
   end
 
   protected
